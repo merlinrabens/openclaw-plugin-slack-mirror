@@ -1,0 +1,89 @@
+{
+  "id": "slack-mirror",
+  "name": "Slack Mirror",
+  "description": "Mirror your Slack identity invisibly. Forward @mentions to Telegram/WhatsApp/Discord. Post AS YOU on command. No Slack bot footprint.",
+  "version": "0.1.0",
+  "author": "Merlin Rabens",
+  "license": "MIT",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "sessionConfig": {
+        "type": "string",
+        "description": "JSON dump of localStorage.localConfig_v2 from your Slack browser tab. Contains all your workspace tokens (xoxc-...). Use the included bookmarklet to scrape it."
+      },
+      "dCookie": {
+        "type": "string",
+        "description": "Slack 'd' cookie value (xoxd-...) from app.slack.com. Shared across all your workspaces."
+      },
+      "notifyTarget": {
+        "type": "object",
+        "description": "Where to send notifications when you're @mentioned in Slack",
+        "properties": {
+          "channel": {
+            "type": "string",
+            "enum": ["telegram", "whatsapp", "discord", "imessage", "signal", "matrix"],
+            "description": "Which OpenClaw channel to forward to"
+          },
+          "chatId": {
+            "type": "string",
+            "description": "Target chat/user ID in that channel"
+          }
+        },
+        "required": ["channel", "chatId"]
+      },
+      "filter": {
+        "type": "object",
+        "description": "Customize what triggers a notification",
+        "properties": {
+          "includeOwnMessages": {
+            "type": "boolean",
+            "default": false,
+            "description": "Forward your own self-DMs and self-mentions (useful for testing)"
+          },
+          "keywordHighlights": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Additional keywords (besides your @-mentions) that trigger notifications"
+          },
+          "muteChannels": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Channel IDs or names to mute (no notifications even on @-mention)"
+          }
+        }
+      },
+      "posterEnabled": {
+        "type": "boolean",
+        "default": false,
+        "description": "Enable AS-YOU posting via xoxp tokens. Requires installing a Slack App with user scopes per workspace and providing user tokens."
+      },
+      "userTokens": {
+        "type": "object",
+        "description": "Optional: per-workspace User OAuth tokens (xoxp-...) for AS-YOU posting. Keys are team_domain.",
+        "additionalProperties": { "type": "string" }
+      }
+    },
+    "required": ["sessionConfig", "dCookie", "notifyTarget"]
+  },
+  "uiHints": {
+    "sessionConfig": {
+      "label": "Slack Browser Session Config",
+      "help": "Use the bookmarklet (browser-extension/scrape-bookmarklet.js) on a Slack tab to capture this. Contains all your workspace tokens.",
+      "secret": true
+    },
+    "dCookie": {
+      "label": "Slack 'd' Cookie",
+      "help": "From DevTools → Application → Cookies → app.slack.com → 'd'",
+      "secret": true
+    },
+    "notifyTarget": {
+      "label": "Notification Target",
+      "help": "Channel + chat ID where mention notifications get forwarded"
+    },
+    "posterEnabled": {
+      "label": "Enable AS-YOU posting",
+      "help": "Allow OpenClaw to post in Slack as you when commanded via your notification channel"
+    }
+  }
+}
