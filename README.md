@@ -1,6 +1,12 @@
 # OpenClaw Plugin: Slack Mirror 🪞
 
+![Slack Mirror — mirror your Slack identity, no bot, no footprint](./docs/media/hero.png)
+
 > **Mirror your Slack identity** across all workspaces — invisibly. Forward @mentions and DMs to Telegram (or WhatsApp, Discord, etc.), and post AS YOU on command. No Slack bot. No app footprint in member lists.
+
+## Demo
+
+![Slack Mirror demo terminal recording](./docs/media/demo.gif)
 
 The official OpenClaw Slack channel installs a visible bot user in every workspace. **This plugin doesn't.** It uses your existing browser session — the same path Slack desktop uses — so nobody else in your workspace sees a thing.
 
