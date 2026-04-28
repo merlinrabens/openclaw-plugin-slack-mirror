@@ -1,24 +1,17 @@
 # VHS tape: Slack Mirror demo
-# Renders to docs/media/demo.gif
-# Run from this directory: vhs demo.tape
+# The script begins with `clear` so the bash invocation is wiped from
+# scrollback before any output is recorded.
+# Run from project root: vhs docs/media/demo.tape
 
 Output docs/media/demo.gif
 
+Set Shell bash
 Set FontSize 14
 Set Width 1100
 Set Height 600
 Set Theme "Catppuccin Mocha"
-Set TypingSpeed 30ms
-Set PlaybackSpeed 1.0
+Set TypingSpeed 0ms
 
-# Hide setup commands so they don't appear in the GIF
-Hide
-Type "clear"
+Type "bash /Users/merlinrabens/projects/openclaw-plugin-slack-mirror/docs/media/demo-script.sh"
 Enter
-Sleep 200ms
-Show
-
-# Run the printable demo script
-Type "bash docs/media/demo-script.sh"
-Enter
-Sleep 18s
+Sleep 22s
