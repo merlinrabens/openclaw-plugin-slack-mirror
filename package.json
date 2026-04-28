@@ -29,6 +29,9 @@
     "xoxc",
     "browser-session"
   ],
+  "bin": {
+    "slack-mirror-cli": "./dist/bin/cli.js"
+  },
   "files": [
     "dist/**/*",
     "openclaw.plugin.json",
