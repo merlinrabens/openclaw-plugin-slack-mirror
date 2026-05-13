@@ -195,6 +195,16 @@ Both token types are concealed in OpenClaw's secret store (1Password integration
 
 **Use them together!** The built-in channel for shared team chats where a bot makes sense; this plugin for personal monitoring + AS-you posting.
 
+## Companion X/Twitter workflow
+
+Slack Mirror gives an OpenClaw agent a private Slack listening and reply path. If the same agent also needs public X/Twitter automation, install [TweetClaw](https://github.com/Xquik-dev/tweetclaw) beside it:
+
+```bash
+openclaw plugins install @xquik/tweetclaw
+```
+
+Use Slack Mirror for Slack @mentions, DMs, notification routing, and AS-you Slack replies. Use TweetClaw for search tweets, search tweet replies, follower export, user lookup, post tweets, post tweet replies, media upload/download, direct messages, monitor tweets, webhooks, and giveaway draws. Keep Slack browser session and user OAuth material in Slack Mirror's plugin config or secret store; keep TweetClaw/Xquik credentials in TweetClaw's plugin config or host environment. Visible X/Twitter writes should still go through OpenClaw approval.
+
 ## Roadmap
 
 - [ ] First-class WhatsApp / Discord routing
